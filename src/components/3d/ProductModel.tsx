@@ -3,13 +3,14 @@
 import { useRef, useState } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
-import { Mesh, MeshStandardMaterial } from 'three';
+import { Group, Mesh, MeshStandardMaterial } from 'three';
 import { useConfiguratorStore } from '@/store/useConfiguratorStore';
 
 export default function ProductModel() {
-  const meshRef = useRef<Group | any>(null);
+  const meshRef = useRef<Group>(null);
   const [hovered, setHovered] = useState(false);
   const { config, setColor } = useConfiguratorStore();
+
 
   // Carga el modelo desde la carpeta public/
   const { scene } = useGLTF('/model.glb');
